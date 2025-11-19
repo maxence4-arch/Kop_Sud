@@ -1877,42 +1877,60 @@ body {
             color: #ccc;
         }
 
-        /* --- Media Query Spécifique pour Mobile (max 600px) --- */
+        .main-content {
+    max-width: 1200px; /* Largeur maximale */
+    width: 90%; /* Prend 90% de la largeur du support */
+    margin: 0 auto;
+}
+
+/* --- CSS Général pour la Flexibilité --- */
+
+/* Assurez-vous que tous les éléments sont inclus dans le calcul de la largeur */
+* {
+    box-sizing: border-box; 
+}
+
+/* ---------------------------------------------------- */
+
+/* --- Media Query pour les Téléphones (Largeur max 600px) --- */
 @media (max-width: 600px) {
     
-    /* 1. La barre de navigation principale (.navbar-green) */
+    /* 1. La barre de navigation principale (verte) */
     .navbar-green {
-        flex-direction: column; /* Force le titre et les boutons à s'empiler */
+        flex-direction: column; /* Empile le titre et les boutons */
         height: auto; 
         padding: 10px;
-        align-items: flex-start; /* Aligne tout à gauche pour les petits écrans */
+        align-items: center; /* Centre les blocs Titre et Boutons */
+        min-width: 100%; /* S'assure de prendre toute la largeur */
     }
     
     /* 2. Le titre KOP SUD | Green Angels 92 */
     .title-container {
-        width: 100%; /* Force le conteneur du titre à prendre toute la largeur */
-        text-align: center; /* Centre le titre */
+        width: 100%;
+        text-align: center;
         margin-bottom: 10px;
     }
     .title-container h1 {
-        font-size: 20px; /* Réduction du titre pour qu'il tienne bien */
-        margin-right: 0;
+        font-size: 20px; /* Taille réduite */
+        margin: 0;
     }
 
     /* 3. Le conteneur des boutons */
     .nav-buttons {
-        width: 100%; /* TRES IMPORTANT : Permet aux boutons de prendre toute la largeur disponible */
-        flex-wrap: wrap; /* Permet aux boutons de passer à la ligne */
-        justify-content: space-evenly; /* Distribue les boutons de manière égale */
-        gap: 5px; /* Petit espacement entre les boutons */
+        width: 100%;
+        flex-wrap: wrap; 
+        justify-content: center; /* Centre les boutons si une ligne ne les contient pas tous */
+        gap: 5px; 
     }
 
     /* 4. Les boutons individuels */
     .nav-btn {
         padding: 8px 10px; 
-        font-size: 10px; /* Petite taille pour qu'ils tiennent mieux */
-        /* Flex-basis est utilisé pour définir une taille minimale aux boutons, permettant au navigateur de les répartir sur plusieurs lignes */
-        flex-basis: 45%; 
-        box-sizing: border-box; /* Inclusion du padding et de la bordure dans la taille */
+        font-size: 10px; 
+        /* TRES IMPORTANT : Permet de placer deux ou trois boutons par ligne */
+        flex-basis: 40%; /* Chaque bouton prend 40% de la largeur du conteneur */
+        text-align: center;
+        margin-bottom: 5px; /* Petit espacement sous chaque bouton */
     }
 }
+        
