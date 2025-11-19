@@ -1933,4 +1933,66 @@ body {
         margin-bottom: 5px; /* Petit espacement sous chaque bouton */
     }
 }
+
+/* --- Correction Spécifique pour la Navigation Mobile (Basée sur photos.txt) --- */
+@media (max-width: 650px) {
+    
+    /* Le conteneur de navigation principal (nav#main-nav) */
+    #main-nav {
+        flex-direction: column; /* Empile les éléments (logo puis liste) */
+        height: auto; 
+        padding: 10px;
+        align-items: flex-start; /* Aligne les blocs à gauche */
+    }
+
+    /* Le logo/titre (KOP SUD | Green Angels 92) */
+    .nav-logo {
+        width: 100%; /* Le logo prend toute la largeur */
+        text-align: center;
+        font-size: 20px;
+        margin-bottom: 10px;
+        height: auto; /* Supprime toute hauteur fixe */
+        line-height: 1.2;
+    }
+
+    /* La liste des boutons (<ul>) */
+    #main-nav ul {
+        width: 100%;
+        display: flex; /* Active Flexbox pour la liste des boutons */
+        flex-wrap: wrap; /* TRES IMPORTANT : Permet aux boutons de passer à la ligne */
+        justify-content: space-evenly; /* Distribue les boutons */
+        padding: 0;
+        margin: 0;
+    }
+    
+    /* Les éléments de la liste (<li>) */
+    #main-nav ul li {
+        width: 48%; /* Deux boutons par ligne (moins de 50% pour l'espace) */
+        margin-bottom: 5px;
+        list-style: none; /* Cache les puces de la liste */
+    }
+    
+    /* Le bouton cliquable (<a>) */
+    .nav-button {
+        width: 100%;
+        display: block; /* Le bouton remplit le <li> */
+        text-align: center;
+        padding: 8px 5px;
+        font-size: 10px;
+    }
+}
+
+/* --- Règle d'adaptation pour la galerie de photos (si elle pose problème) --- */
+@media (max-width: 650px) {
+    .section-cards {
+        flex-direction: column; /* Empile les cartes verticalement */
+        align-items: center;
+        padding: 0 10px;
+    }
+    .section-cards a {
+        width: 100%; /* Chaque carte prend toute la largeur */
+        max-width: 350px;
+        margin-bottom: 15px;
+    }
+}
         
