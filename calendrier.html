@@ -3,6 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Manifest PWA -->
+<link rel="manifest" href="manifest.json">
+
+<!-- Couleur du thème (barre d'adresse sur mobile) -->
+<meta name="theme-color" content="#009900">
+
+<!-- Apple Touch Icons pour iOS -->
+<link rel="apple-touch-icon" href="images/icon-152x152.png">
+<link rel="apple-touch-icon" sizes="72x72" href="images/icon-72x72.png">
+<link rel="apple-touch-icon" sizes="96x96" href="images/icon-96x96.png">
+<link rel="apple-touch-icon" sizes="128x128" href="images/icon-128x128.png">
+<link rel="apple-touch-icon" sizes="144x144" href="images/icon-144x144.png">
+<link rel="apple-touch-icon" sizes="152x152" href="images/icon-152x152.png">
+<link rel="apple-touch-icon" sizes="192x192" href="images/icon-192x192.png">
+<link rel="apple-touch-icon" sizes="384x384" href="images/icon-384x384.png">
+<link rel="apple-touch-icon" sizes="512x512" href="images/icon-512x512.png">
+
+<!-- Configuration iOS -->
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="KOP SUD ASSE">
+
+<!-- Configuration Windows -->
+<meta name="msapplication-TileImage" content="images/icon-144x144.png">
+<meta name="msapplication-TileColor" content="#009900">
+
+<!-- Description pour SEO et partage -->
+<meta name="description" content="Application officielle du Kop Sud de l'AS Saint-Étienne - Green Angels 92. Suivez les matchs, les chants et rejoignez la communauté des supporters stéphanois !">
     <title>KOP SUD ASSE - Matchs & Calendrier</title>
     <link rel="stylesheet" href="css/style.css">
     </head>
@@ -90,6 +118,100 @@
     </footer>
 
     <script src="js/script.js"></script>
+
+    <script>
+// ===== ENREGISTREMENT DU SERVICE WORKER =====
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('/Kop_Sud/service-worker.js')
+      .then((registration) => {
+        console.log('✅ Service Worker enregistré avec succès:', registration.scope);
+      })
+      .catch((error) => {
+        console.log('❌ Échec de l\'enregistrement du Service Worker:', error);
+      });
+  });
+}
+
+// ===== BOUTON D'INSTALLATION PWA =====
+let deferredPrompt;
+const installButton = document.createElement('button');
+installButton.id = 'installPWA';
+installButton.innerHTML = '📱 Installer l\'app KOP SUD';
+installButton.style.cssText = `
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: linear-gradient(135deg, #009900 0%, #006600 100%);
+  color: white;
+  border: none;
+  padding: 15px 25px;
+  border-radius: 50px;
+  font-weight: bold;
+  font-size: 1em;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 153, 0, 0.4);
+  z-index: 9999;
+  display: none;
+  transition: all 0.3s ease;
+  font-family: Arial, sans-serif;
+`;
+
+// Effet hover
+installButton.addEventListener('mouseenter', () => {
+  installButton.style.transform = 'translateY(-3px)';
+  installButton.style.boxShadow = '0 6px 20px rgba(0, 153, 0, 0.5)';
+});
+
+installButton.addEventListener('mouseleave', () => {
+  installButton.style.transform = 'translateY(0)';
+  installButton.style.boxShadow = '0 4px 15px rgba(0, 153, 0, 0.4)';
+});
+
+document.body.appendChild(installButton);
+
+// Événement beforeinstallprompt
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredPrompt = e;
+  installButton.style.display = 'block';
+  console.log('💡 Bouton d\'installation PWA affiché');
+});
+
+// Clic sur le bouton d'installation
+installButton.addEventListener('click', async () => {
+  if (!deferredPrompt) {
+    console.log('❌ Aucune demande d\'installation en attente');
+    return;
+  }
+  
+  deferredPrompt.prompt();
+  const { outcome } = await deferredPrompt.userChoice;
+  
+  if (outcome === 'accepted') {
+    console.log('✅ L\'utilisateur a accepté l\'installation');
+  } else {
+    console.log('❌ L\'utilisateur a refusé l\'installation');
+  }
+  
+  deferredPrompt = null;
+  installButton.style.display = 'none';
+});
+
+// Événement appinstalled
+window.addEventListener('appinstalled', () => {
+  console.log('🎉 PWA installée avec succès !');
+  installButton.style.display = 'none';
+  deferredPrompt = null;
+  alert('🎉 Application KOP SUD ASSE installée avec succès !\n\nVous pouvez maintenant y accéder depuis votre écran d\'accueil.');
+});
+
+// Détecter si l'app est déjà installée
+if (window.matchMedia('(display-mode: standalone)').matches) {
+  console.log('✅ Application en mode standalone (déjà installée)');
+  installButton.style.display = 'none';
+}
+</script>
 
 </body>
 </html>
