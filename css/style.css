@@ -1890,109 +1890,79 @@ body {
     box-sizing: border-box; 
 }
 
-/* ---------------------------------------------------- */
-
-/* --- Media Query pour les Téléphones (Largeur max 600px) --- */
-@media (max-width: 600px) {
-    
-    /* 1. La barre de navigation principale (verte) */
-    .navbar-green {
-        flex-direction: column; /* Empile le titre et les boutons */
-        height: auto; 
-        padding: 10px;
-        align-items: center; /* Centre les blocs Titre et Boutons */
-        min-width: 100%; /* S'assure de prendre toute la largeur */
-    }
-    
-    /* 2. Le titre KOP SUD | Green Angels 92 */
-    .title-container {
-        width: 100%;
-        text-align: center;
-        margin-bottom: 10px;
-    }
-    .title-container h1 {
-        font-size: 20px; /* Taille réduite */
-        margin: 0;
-    }
-
-    /* 3. Le conteneur des boutons */
-    .nav-buttons {
-        width: 100%;
-        flex-wrap: wrap; 
-        justify-content: center; /* Centre les boutons si une ligne ne les contient pas tous */
-        gap: 5px; 
-    }
-
-    /* 4. Les boutons individuels */
-    .nav-btn {
-        padding: 8px 10px; 
-        font-size: 10px; 
-        /* TRES IMPORTANT : Permet de placer deux ou trois boutons par ligne */
-        flex-basis: 40%; /* Chaque bouton prend 40% de la largeur du conteneur */
-        text-align: center;
-        margin-bottom: 5px; /* Petit espacement sous chaque bouton */
-    }
+/* --- 1. Règle Générale (Réinitialisation) --- */
+/* S'assurer que le body et le header prennent 100% de la largeur */
+body, header {
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    /* Empêche le défilement horizontal dû à un contenu trop large */
+    overflow-x: hidden; 
 }
 
-/* --- Correction Spécifique pour la Navigation Mobile (Basée sur photos.txt) --- */
-@media (max-width: 650px) {
+
+/* --- 2. Media Query pour les Téléphones (max 700px) --- */
+@media (max-width: 700px) {
     
-    /* Le conteneur de navigation principal (nav#main-nav) */
+    /* Conteneur de navigation principal (nav#main-nav) */
     #main-nav {
-        flex-direction: column; /* Empile les éléments (logo puis liste) */
-        height: auto; 
-        padding: 10px;
-        align-items: flex-start; /* Aligne les blocs à gauche */
+        display: flex;
+        flex-direction: column; /* Force les éléments à s'empiler verticalement */
+        width: 100%; /* S'assure de prendre toute la largeur */
+        height: auto;
+        align-items: center; /* Centre le titre et la liste de boutons */
+        padding: 10px 0;
     }
 
     /* Le logo/titre (KOP SUD | Green Angels 92) */
     .nav-logo {
-        width: 100%; /* Le logo prend toute la largeur */
+        width: 90%; 
         text-align: center;
         font-size: 20px;
-        margin-bottom: 10px;
-        height: auto; /* Supprime toute hauteur fixe */
+        margin-bottom: 15px;
         line-height: 1.2;
     }
 
     /* La liste des boutons (<ul>) */
     #main-nav ul {
-        width: 100%;
-        display: flex; /* Active Flexbox pour la liste des boutons */
-        flex-wrap: wrap; /* TRES IMPORTANT : Permet aux boutons de passer à la ligne */
-        justify-content: space-evenly; /* Distribue les boutons */
+        width: 95%; 
+        display: flex; 
+        flex-wrap: wrap; /* Permet aux boutons de passer à la ligne suivante */
+        justify-content: space-between; /* Distribue les boutons avec espace */
         padding: 0;
         margin: 0;
     }
     
     /* Les éléments de la liste (<li>) */
     #main-nav ul li {
-        width: 48%; /* Deux boutons par ligne (moins de 50% pour l'espace) */
-        margin-bottom: 5px;
-        list-style: none; /* Cache les puces de la liste */
+        /* Calcule une largeur pour que deux boutons tiennent par ligne avec 10px d'espace */
+        width: calc(50% - 5px); 
+        margin-bottom: 10px;
+        list-style: none;
     }
     
     /* Le bouton cliquable (<a>) */
     .nav-button {
         width: 100%;
-        display: block; /* Le bouton remplit le <li> */
+        display: block; 
         text-align: center;
-        padding: 8px 5px;
-        font-size: 10px;
+        padding: 10px 5px;
+        font-size: 11px; /* Légèrement réduit pour les petits écrans */
     }
-}
 
-/* --- Règle d'adaptation pour la galerie de photos (si elle pose problème) --- */
-@media (max-width: 650px) {
+    /* --- Correction des autres sections --- */
+    /* Assure que le contenu principal et les cartes ne débordent pas */
+    .page-content {
+        padding: 10px;
+    }
+
     .section-cards {
         flex-direction: column; /* Empile les cartes verticalement */
         align-items: center;
-        padding: 0 10px;
     }
-    .section-cards a {
-        width: 100%; /* Chaque carte prend toute la largeur */
-        max-width: 350px;
-        margin-bottom: 15px;
+
+    .section-cards .card-link {
+        width: 95%; /* Les cartes prennent presque toute la largeur */
+        margin-bottom: 20px;
     }
 }
-        
