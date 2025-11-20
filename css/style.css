@@ -1901,68 +1901,100 @@ body, header {
 }
 
 
-/* --- 2. Media Query pour les Téléphones (max 700px) --- */
 @media (max-width: 700px) {
     
-    /* Conteneur de navigation principal (nav#main-nav) */
+    /* Conteneur de navigation principal */
     #main-nav {
-        display: flex;
-        flex-direction: column; /* Force les éléments à s'empiler verticalement */
-        width: 100%; /* S'assure de prendre toute la largeur */
-        height: auto;
-        align-items: center; /* Centre le titre et la liste de boutons */
-        padding: 10px 0;
+        flex-direction: column; /* FORCER LE PASSAGE À LA LIGNE */
+        align-items: center; 
     }
 
-    /* Le logo/titre (KOP SUD | Green Angels 92) */
+    /* Le logo/titre */
     .nav-logo {
-        width: 90%; 
+        width: 100%; 
         text-align: center;
-        font-size: 20px;
-        margin-bottom: 15px;
-        line-height: 1.2;
+        font-size: 20px; 
+        margin-bottom: 15px; 
+        margin-right: 0; /* Suppression de la marge qui poussait les boutons */
     }
 
     /* La liste des boutons (<ul>) */
     #main-nav ul {
-        width: 95%; 
-        display: flex; 
-        flex-wrap: wrap; /* Permet aux boutons de passer à la ligne suivante */
-        justify-content: space-between; /* Distribue les boutons avec espace */
-        padding: 0;
-        margin: 0;
+        width: 100%;
+        flex-wrap: wrap; 
+        justify-content: space-evenly; /* Distribue les boutons de manière égale */
+        gap: 5px; 
     }
     
     /* Les éléments de la liste (<li>) */
     #main-nav ul li {
-        /* Calcule une largeur pour que deux boutons tiennent par ligne avec 10px d'espace */
-        width: calc(50% - 5px); 
-        margin-bottom: 10px;
-        list-style: none;
+        width: calc(50% - 5px); /* Deux boutons par ligne */
+        margin-bottom: 5px;
     }
     
-    /* Le bouton cliquable (<a>) */
+    /* Les boutons cliquables */
     .nav-button {
         width: 100%;
         display: block; 
-        text-align: center;
-        padding: 10px 5px;
-        font-size: 11px; /* Légèrement réduit pour les petits écrans */
+        font-size: 10px; 
     }
+}
+/* --- Styles généraux pour la largeur et la réinitialisation --- */
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%; /* Le corps du document doit prendre 100% de la largeur */
+}
 
-    /* --- Correction des autres sections --- */
-    /* Assure que le contenu principal et les cartes ne débordent pas */
-    .page-content {
-        padding: 10px;
-    }
+header {
+    width: 100%; /* L'en-tête doit prendre 100% de la largeur */
+    /* Assurez-vous qu'aucune hauteur fixe ne contraint le header ici */
+    height: auto; 
+    padding: 0; 
+}
 
-    .section-cards {
-        flex-direction: column; /* Empile les cartes verticalement */
-        align-items: center;
-    }
+/* Le conteneur de navigation */
+#main-nav {
+    width: 100%; /* La navigation prend 100% de la largeur de l'en-tête */
+    display: flex; /* Utilise Flexbox pour aligner les éléments */
+    align-items: center; /* Centre verticalement le titre et les boutons */
+    padding: 10px 20px; /* Ajoute un espace intérieur */
+    /* Ajoutez ici la couleur de fond verte pour la barre */
+    background-color: #008000; 
+    box-sizing: border-box; /* IMPORTANT : pour inclure le padding dans la largeur */
+}
 
-    .section-cards .card-link {
-        width: 95%; /* Les cartes prennent presque toute la largeur */
-        margin-bottom: 20px;
-    }
+/* Style du titre (KOP SUD | Green Angels 92) */
+.nav-logo {
+    font-size: 30px;
+    font-weight: bold;
+    color: white;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.4);
+    text-decoration: none;
+    white-space: nowrap; /* Empêche le titre de passer à la ligne sur ordinateur */
+    margin-right: auto; /* Pousse la liste des boutons à droite */
+}
+
+/* La liste des boutons (<ul>) */
+#main-nav ul {
+    display: flex; /* Aligne les boutons horizontalement */
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 10px; /* Espacement entre les boutons */
+}
+
+/* Les boutons cliquables (<a>) */
+.nav-button {
+    text-decoration: none;
+    color: white;
+    background-color: #222222;
+    border: 1px solid white;
+    padding: 10px 15px;
+    font-size: 14px;
+    font-weight: bold;
+    text-transform: uppercase;
+    border-radius: 3px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+    white-space: nowrap;
 }
