@@ -1998,3 +1998,47 @@ header {
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
     white-space: nowrap;
 }
+
+/* --- Media Query AGRESSIVE pour forcer la mise en page --- */
+@media (max-width: 700px) {
+    
+    /* Force le conteneur de navigation à s'empiler verticalement et prendre 100% */
+    #main-nav {
+        flex-direction: column !important; /* Force l'empilement */
+        width: 100% !important; /* Force la largeur totale */
+        align-items: center !important; 
+        padding: 10px 0 !important;
+        height: auto !important;
+    }
+
+    /* Le logo/titre */
+    .nav-logo {
+        width: 90% !important; 
+        text-align: center !important;
+        font-size: 20px !important; 
+        margin-right: 0 !important;
+        margin-bottom: 15px !important; 
+    }
+
+    /* La liste des boutons (<ul>) */
+    #main-nav ul {
+        width: 95% !important; 
+        display: flex !important; 
+        flex-wrap: wrap !important; 
+        justify-content: space-between !important; 
+    }
+    
+    /* Les éléments de la liste (<li>) */
+    #main-nav ul li {
+        width: calc(50% - 5px) !important; 
+        margin-bottom: 5px !important;
+    }
+    
+    /* Le bouton cliquable (<a>) */
+    .nav-button {
+        width: 100% !important;
+        display: block !important; 
+        font-size: 10px !important; 
+        padding: 10px 5px !important;
+    }
+}
