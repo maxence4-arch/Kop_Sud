@@ -1,3 +1,19 @@
+/* --- RÉINITIALISATION GLOBALE POUR LA RESPONSIVITÉ --- */
+body, html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    /* Empêche le défilement horizontal causé par un débordement de contenu */
+    overflow-x: hidden; 
+}
+
+/* Force le HEADER à toujours prendre 100% de la largeur du support */
+header {
+    width: 100% !important; 
+    height: auto !important;
+    min-width: 100% !important;
+}
+
 /* --- VARIABLES ET RESET CSS --- */
 :root {
     --couleur-primaire: #009900;    /* Vert Sapin (ASSE) */
