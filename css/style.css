@@ -999,13 +999,13 @@ footer {
 /* --- Tablettes (mobile) --- */
 @media (max-width: 768px) {
     /* Afficher la version mobile des tableaux */
-    .match-table {
+    /*.match-table {
         display: none;
     }
     
     .match-table-mobile {
         display: block;
-    }
+    } */
     
     /* Hero Banner réduit */
     .hero-banner {
