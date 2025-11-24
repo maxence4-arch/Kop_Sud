@@ -5,7 +5,6 @@ const urlsToCache = [
   '/Kop_Sud/photos.html',
   '/Kop_Sud/chant.html',
   '/Kop_Sud/calendrier.html',
-  '/Kop_Sud/communaute.html',
   '/Kop_Sud/meteo.html',
   '/Kop_Sud/stade.html',
   '/Kop_Sud/classement.html',
